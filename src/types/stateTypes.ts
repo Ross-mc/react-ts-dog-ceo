@@ -1,1 +1,2 @@
-export type BreedsNames = string[];
+export type BreedNames = string[];
+export type Breed = string;
