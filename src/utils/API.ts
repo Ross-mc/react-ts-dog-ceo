@@ -11,13 +11,13 @@ const getBreedsList = async () => {
   }
 };
 
-const getRandomImgs = async (breed: string, subBreed: string) => {
+const getRandomImgs = async (breed: string, subBreed: string, number: number) => {
   try {
     let url = `${URLs.BREED_BASE}/${breed}`;
     if (subBreed){
       url += `/${subBreed}`;
     } 
-    url += "/images";
+    url += `/images/random/${number}`;
     const response = await axios.get(url);
     const { data } = response;
     return data.message as RandomImagesRespose;

@@ -47,7 +47,9 @@ const App: React.FC = () => {
   const submitSearch = async (e: FormEvent) => {
     e.preventDefault();
     //TODO: trycatch
-    const result = await API.getRandomImgs(selectedBreed, selectedsubBreed);
+
+    //TODO: get user input for number
+    const result = await API.getRandomImgs(selectedBreed, selectedsubBreed, 3);
     console.log(result);
   };
 
