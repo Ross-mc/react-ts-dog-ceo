@@ -9,9 +9,9 @@ const App: React.FC = () =>  {
   const fetchBreeds = useCallback(async () => {
     const data = await API.getBreedsList();
     setBreeds(data);
-    console.log(breeds);
+    console.info(breeds);
     setLoading(false);
-    console.log(loading);
+    console.info(loading);
   }, [])
   
   useEffect(() => {
