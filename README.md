@@ -14,7 +14,7 @@ To run the test suite run `npm run test`.
 
 ## Deployment
 
-(TBC)
+Deployed through Netlify -> [link](https://dog-ceo-api.netlify.app/)
 
 ## Tech
 
