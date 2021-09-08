@@ -11,21 +11,24 @@ const SubBreedSelect: React.FC<SelectProps> = ({
   subBreedInputChangeHandler,
 }) => {
   return (
-    <select
-      name="breed"
-      disabled={subBreeds.length < 1}
-      onChange={(e: FormEvent) => {
-        const target = e.currentTarget as HTMLSelectElement;
-        subBreedInputChangeHandler(target.value);
-      }}
-    >
-      <option value="">--Please select a sub-breed--</option>
-      {subBreeds.map((subBreed) => (
-        <option value={subBreed} key={subBreed}>
-          {subBreed}
-        </option>
-      ))}
-    </select>
+    <div className="input-container">
+      <label htmlFor="subBreed">Please select a sub-breed</label>
+      <select
+        name="subBreed"
+        disabled={subBreeds.length < 1}
+        onChange={(e: FormEvent) => {
+          const target = e.currentTarget as HTMLSelectElement;
+          subBreedInputChangeHandler(target.value);
+        }}
+      >
+        <option value="">Select</option>
+        {subBreeds.map((subBreed) => (
+          <option value={subBreed} key={subBreed}>
+            {subBreed}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 };
 

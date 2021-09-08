@@ -1,5 +1,6 @@
-import { FormEvent } from "react";
+import { FormEvent, RefObject } from "react";
 import BreedSelect from "./BreedSelect";
+import NumberInput from "./NumberInput";
 import SubBreedSelect from "./SubBreedSelect";
 import SubmitButton from "./SubmitButton";
 
@@ -9,6 +10,7 @@ interface FormProps {
   subBreeds: string[];
   breedInputChangeHandler: (breed: string | null) => void;
   subBreedInputChangeHandler: (breed: string | null) => void;
+  numberRef: RefObject<HTMLInputElement>
 }
 
 const Form: React.FC<FormProps> = ({
@@ -17,6 +19,7 @@ const Form: React.FC<FormProps> = ({
   subBreeds,
   breedInputChangeHandler,
   subBreedInputChangeHandler,
+  numberRef
 }) => {
   return (
     <form onSubmit={submitHandler}>
@@ -28,6 +31,7 @@ const Form: React.FC<FormProps> = ({
         subBreeds={subBreeds}
         subBreedInputChangeHandler={subBreedInputChangeHandler}
       />
+      <NumberInput numberRef={numberRef}/>
       <SubmitButton />
     </form>
   );

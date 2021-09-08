@@ -11,20 +11,23 @@ const BreedSelect: React.FC<SelectProps> = ({
   breedInputChangeHandler,
 }) => {
   return (
-    <select
-      name="breed"
-      onChange={(e: FormEvent) => {
-        const target = e.currentTarget as HTMLSelectElement;
-        breedInputChangeHandler(target.value);
-      }}
-    >
-      <option value="">--Please select a breed--</option>
-      {breeds.map((breed) => (
-        <option value={breed} key={breed}>
-          {breed}
-        </option>
-      ))}
-    </select>
+    <div className="input-container">
+      <label htmlFor="breed">Please select a breed</label>
+      <select
+        name="breed"
+        onChange={(e: FormEvent) => {
+          const target = e.currentTarget as HTMLSelectElement;
+          breedInputChangeHandler(target.value);
+        }}
+      >
+        <option value="">Select</option>
+        {breeds.map((breed) => (
+          <option value={breed} key={breed}>
+            {breed}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 };
 

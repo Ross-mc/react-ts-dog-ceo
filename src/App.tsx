@@ -1,5 +1,7 @@
-import React, { useEffect, useState, FormEvent } from "react";
+import React, { useEffect, useState, FormEvent, useRef } from "react";
 import Form from "./components/Form/Form";
+import MainContainer from "./components/Layout/MainContainer";
+import Title from "./components/Title/Title";
 import { BreedsListResponse } from "./types/api";
 import { BreedNames } from "./types/stateTypes";
 import API from "./utils/API";
@@ -11,6 +13,8 @@ const App: React.FC = () => {
   const [subBreedNames, setsubBreedNames] = useState<BreedNames>([]);
   const [selectedBreed, setSelectedBreed] = useState<string>("");
   const [selectedsubBreed, setSelectedsubBreed] = useState<string>("");
+
+  const numberRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     //TODO: trycatch
@@ -48,14 +52,14 @@ const App: React.FC = () => {
     e.preventDefault();
     //TODO: trycatch
 
-    //TODO: get user input for number
-    const result = await API.getRandomImgs(selectedBreed, selectedsubBreed, 3);
+    const inputNumber = numberRef.current?.value || 3;
+    const result = await API.getRandomImgs(selectedBreed, selectedsubBreed, +inputNumber);
     console.log(result);
   };
 
   return (
-    <div>
-      <h1>Search for Images of Dogs!</h1>
+    <MainContainer>
+      <Title />
       {!loading && (
         <Form
           submitHandler={submitSearch}
@@ -63,9 +67,10 @@ const App: React.FC = () => {
           subBreeds={subBreedNames}
           breedInputChangeHandler={breedInputChangeHandler}
           subBreedInputChangeHandler={subBreedInputChangeHandler}
+          numberRef={numberRef}
         />
       )}
-    </div>
+    </MainContainer>
   );
 };
 
