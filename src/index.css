@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  background-color: #e8e8e8;
 }
 
 .main-container {
@@ -75,7 +76,7 @@ form button:hover{
   width: 300px;
   max-width: 300px;
   height: 300px;
-  box-shadow: 0 0 5px rgb(160, 160, 160);
+  box-shadow: 0 0 5px rgb(126, 126, 126);
   margin: 1rem 0.2rem
 }
 
