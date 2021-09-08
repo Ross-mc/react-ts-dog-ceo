@@ -4,11 +4,13 @@ import { BreedNames } from "../../types/stateTypes";
 interface SelectProps {
   breeds: BreedNames;
   breedInputChangeHandler: (breed: string | null) => void;
+  validated: boolean
 }
 
 const BreedSelect: React.FC<SelectProps> = ({
   breeds,
   breedInputChangeHandler,
+  validated
 }) => {
   return (
     <div className="input-container">
@@ -19,6 +21,7 @@ const BreedSelect: React.FC<SelectProps> = ({
           const target = e.currentTarget as HTMLSelectElement;
           breedInputChangeHandler(target.value);
         }}
+        className={validated ? "valid-select" : "invalid-select"}
       >
         <option value="">Select</option>
         {breeds.map((breed) => (

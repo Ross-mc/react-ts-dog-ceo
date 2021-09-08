@@ -8,7 +8,7 @@ const NumberInput: React.FC<InputProps> = ({numberRef}) => {
   return (
     <div className="input-container">
       <label htmlFor="number">Number of Images</label>
-      <input type="number" min="1" max="10" name="number" ref={numberRef}/>
+      <input type="number" min="1" max="25" name="number" ref={numberRef} id="number-input"/>
     </div>
   )
 }

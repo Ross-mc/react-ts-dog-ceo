@@ -1,11 +1,12 @@
 import React, { useEffect, useState, FormEvent, useRef } from "react";
 import Form from "./components/Form/Form";
 import ImageContainer from "./components/Images/ImageContainer";
-import MainContainer from "./components/Layout/MainContainer";
+import MainContainer from "./components/UI/MainContainer";
 import Title from "./components/Title/Title";
 import { BreedsListResponse } from "./types/api";
 import { BreedNames } from "./types/stateTypes";
 import API from "./utils/API";
+import Spinner from "./components/UI/Spinner";
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -16,8 +17,9 @@ const App: React.FC = () => {
   const [selectedsubBreed, setSelectedsubBreed] = useState<string>("");
   const [apiError, setApiError] = useState<boolean>(true);
   const [images, setImages] = useState<string[]>([]);
+  const [validated, setValidated] = useState<boolean>(true);
 
-  const numberRef = useRef<HTMLInputElement>(null);
+  const numberRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     API.getBreedsList()
@@ -30,6 +32,8 @@ const App: React.FC = () => {
       .finally(() => {
         setLoading(false);
       });
+    const numberInput = document.getElementById("number-input") as HTMLInputElement;
+    numberInput.value = "0";
   }, []);
 
   useEffect(() => {
@@ -58,10 +62,14 @@ const App: React.FC = () => {
 
   const submitSearch = async (e: FormEvent) => {
     e.preventDefault();
-    //TODO: trycatch
+    if (!selectedBreed){
+      setValidated(false);
+      return;
+    }
     try {
       setLoading(true);
       const inputNumber = numberRef.current?.value || 3;
+      setValidated(true);
       const result = await API.getRandomImgs(selectedBreed, selectedsubBreed, +inputNumber);
       setImages(result);
     } catch (error) {
@@ -82,8 +90,9 @@ const App: React.FC = () => {
         breedInputChangeHandler={breedInputChangeHandler}
         subBreedInputChangeHandler={subBreedInputChangeHandler}
         numberRef={numberRef}
+        validated={validated}
       />
-      {!loading && (
+      {loading ? <Spinner />:  (
         <ImageContainer images={images}/>
       )}
     </MainContainer>

@@ -10,7 +10,8 @@ interface FormProps {
   subBreeds: string[];
   breedInputChangeHandler: (breed: string | null) => void;
   subBreedInputChangeHandler: (breed: string | null) => void;
-  numberRef: RefObject<HTMLInputElement>
+  numberRef: RefObject<HTMLInputElement>;
+  validated: boolean
 }
 
 const Form: React.FC<FormProps> = ({
@@ -19,13 +20,15 @@ const Form: React.FC<FormProps> = ({
   subBreeds,
   breedInputChangeHandler,
   subBreedInputChangeHandler,
-  numberRef
+  numberRef,
+  validated
 }) => {
   return (
     <form onSubmit={(e) => submitHandler(e)}>
       <BreedSelect
         breeds={breeds}
         breedInputChangeHandler={breedInputChangeHandler}
+        validated={validated}
       />
       <SubBreedSelect
         subBreeds={subBreeds}
