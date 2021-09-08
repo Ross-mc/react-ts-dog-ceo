@@ -93,3 +93,11 @@ form button:hover{
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.error {
+  width: 100px;
+  margin: 0 auto;
+  background-color: rgb(218, 97, 97);
+  border: 1px solid red;
+  padding: 0.2rem 1rem;
+}

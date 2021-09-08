@@ -7,6 +7,7 @@ import { BreedsListResponse } from "./types/api";
 import { BreedNames } from "./types/stateTypes";
 import API from "./utils/API";
 import Spinner from "./components/UI/Spinner";
+import ErrorDisplay from "./components/UI/ErrorDisplay";
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -15,7 +16,7 @@ const App: React.FC = () => {
   const [subBreedNames, setsubBreedNames] = useState<BreedNames>([]);
   const [selectedBreed, setSelectedBreed] = useState<string>("");
   const [selectedsubBreed, setSelectedsubBreed] = useState<string>("");
-  const [apiError, setApiError] = useState<boolean>(true);
+  const [apiError, setApiError] = useState<boolean>(false);
   const [images, setImages] = useState<string[]>([]);
   const [validated, setValidated] = useState<boolean>(true);
 
@@ -73,6 +74,7 @@ const App: React.FC = () => {
       const result = await API.getRandomImgs(selectedBreed, selectedsubBreed, +inputNumber);
       setImages(result);
     } catch (error) {
+      setImages([]);
       setApiError(true)
     } finally {
       setLoading(false);
@@ -95,6 +97,7 @@ const App: React.FC = () => {
       {loading ? <Spinner />:  (
         <ImageContainer images={images}/>
       )}
+      {apiError && <ErrorDisplay message={"Api Error"}/>}
     </MainContainer>
   );
 };
