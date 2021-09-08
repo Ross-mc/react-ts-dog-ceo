@@ -5,4 +5,65 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 50px auto;
+  max-width: 1500px;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+form select, form input {
+  margin-top: 5px;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem;
+}
+
+form button {
+  cursor: pointer;
+  display:inline-block;
+  padding:0.3em 1.2em;
+  border-radius:2em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+  color:#FFFFFF;
+  background-color:#4eb5f1;
+  text-align:center;
+  border: none;
+}
+
+form button:hover{
+  background-color:#0f9df0;
+}
+
+
+.image-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.image img {
+  object-fit: cover;
+  width: 300px;
+  max-width: 300px;
+  height: 300px;
+  box-shadow: 0 0 5px rgb(160, 160, 160);
+  margin: 1rem 0.2rem
 }

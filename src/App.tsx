@@ -20,7 +20,6 @@ const App: React.FC = () => {
   const numberRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    //TODO: trycatch
     API.getBreedsList()
       .then((data) => {
       setBreeds(data);
@@ -76,16 +75,14 @@ const App: React.FC = () => {
   return (
     <MainContainer>
       <Title />
-      {!loading && (
-        <Form
-          submitHandler={submitSearch}
-          breeds={breedNames}
-          subBreeds={subBreedNames}
-          breedInputChangeHandler={breedInputChangeHandler}
-          subBreedInputChangeHandler={subBreedInputChangeHandler}
-          numberRef={numberRef}
-        />
-      )}
+      <Form
+        submitHandler={submitSearch}
+        breeds={breedNames}
+        subBreeds={subBreedNames}
+        breedInputChangeHandler={breedInputChangeHandler}
+        subBreedInputChangeHandler={subBreedInputChangeHandler}
+        numberRef={numberRef}
+      />
       {!loading && (
         <ImageContainer images={images}/>
       )}

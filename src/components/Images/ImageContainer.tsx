@@ -7,7 +7,7 @@ interface ImageProps {
 const ImageContainer: React.FC<ImageProps> = ({images}) => {
   return (
     <div className="image-container">
-      {images.map(image => <DogImage image={image}/>)}
+      {images.map(image => <DogImage image={image} key={image}/>)}
     </div>
   )
 }

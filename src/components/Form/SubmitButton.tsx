@@ -1,3 +1,3 @@
-const SubmitButton: React.FC = () => <button>Search</button>
+const SubmitButton: React.FC = () => <button>View Images</button>
 
 export default SubmitButton

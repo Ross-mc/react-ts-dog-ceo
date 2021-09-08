@@ -22,7 +22,7 @@ const Form: React.FC<FormProps> = ({
   numberRef
 }) => {
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={(e) => submitHandler(e)}>
       <BreedSelect
         breeds={breeds}
         breedInputChangeHandler={breedInputChangeHandler}
