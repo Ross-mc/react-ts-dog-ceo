@@ -24,7 +24,7 @@ const Form: React.FC<FormProps> = ({
   validated
 }) => {
   return (
-    <form onSubmit={(e) => submitHandler(e)}>
+    <form onSubmit={(e) => submitHandler(e)} data-testid="form">
       <BreedSelect
         breeds={breeds}
         breedInputChangeHandler={breedInputChangeHandler}
